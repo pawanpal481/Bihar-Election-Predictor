@@ -1,32 +1,31 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import pickle
-import numpy as np
 
 # Initialize Flask app
 app = Flask(__name__)
 
-# Load the trained model
+# Load model
 model = pickle.load(open('election_race_model.pkl', 'rb'))
 
-# ID to Name Mappings
+# Party Mapping
 party_mapping = {
-    0: "BJP",             # Bharatiya Janata Party
-    1: "RJD",             # Rashtriya Janata Dal
-    2: "INC",             # Indian National Congress
-    3: "JD(U)",           # Janata Dal (United)
-    4: "LJP",             # Lok Janshakti Party
-    5: "CPI(ML)",         # Communist Party of India (Marxist–Leninist)
-    6: "CPI",             # Communist Party of India
-    7: "CPM",             # Communist Party of India (Marxist)
-    8: "BSP",             # Bahujan Samaj Party
-    9: "HAM(S)",          # Hindustani Awam Morcha (Secular)
-    10: "RLSP",           # Rashtriya Lok Samata Party
-    11: "AIMIM",          # All India Majlis-e-Ittehadul Muslimeen
+    0: "BJP",
+    1: "RJD",
+    2: "INC",
+    3: "JD(U)",
+    4: "LJP",
+    5: "CPI(ML)",
+    6: "CPI",
+    7: "CPM",
+    8: "BSP",
+    9: "HAM(S)",
+    10: "RLSP",
+    11: "AIMIM",
     12: "Independent",
     13: "Others"
 }
 
-
+# District Mapping
 district_mapping = {
     1: "Araria",
     2: "Arwal",
@@ -68,22 +67,24 @@ district_mapping = {
     38: "West Champaran"
 }
 
-
+# Constituency Type Mapping
 type_mapping = {
     0: "General",
     1: "SC",
     2: "ST"
 }
 
-# Root endpoint
-from flask import Flask, request, jsonify, render_template
-
+# Home Route
 @app.route('/')
 def home():
-    return render_template("form.html", parties=party_mapping, districts=district_mapping, types=type_mapping)
+    return render_template(
+        "index.html",
+        parties=party_mapping,
+        districts=district_mapping,
+        types=type_mapping
+    )
 
-
-# Prediction endpoint
+# Prediction Route
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -94,18 +95,30 @@ def predict():
         district = int(request.form['district'])
         ac_type = int(request.form['type'])
 
-        features = [poll, total_votes, total_electors, party, district, ac_type]
-        prediction = model.predict([features])[0]
-        result = "tight" if prediction == 1 else "safe"
+        features = [
+            poll,
+            total_votes,
+            total_electors,
+            party,
+            district,
+            ac_type
+        ]
 
-        return render_template("result.html",
-                               result=result,
-                               party=party_mapping.get(party, "Unknown"),
-                               district=district_mapping.get(district, "Unknown"),
-                               ac_type=type_mapping.get(ac_type, "Unknown"))
+        prediction = model.predict([features])[0]
+
+        result = "Tight Race" if prediction == 1 else "Safe Seat"
+
+        return render_template(
+            "result.html",
+            result=result,
+            party=party_mapping.get(party),
+            district=district_mapping.get(district),
+            ac_type=type_mapping.get(ac_type)
+        )
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-# Run the Flask app
+
+
 if __name__ == '__main__':
     app.run(debug=True)

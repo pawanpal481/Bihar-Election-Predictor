@@ -1,13 +1,52 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <title>Prediction Result</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h2>📊 Prediction Result</h2>
-    <p><strong>Prediction:</strong> {{ result.upper() }} Race</p>
-    <p><strong>Party:</strong> {{ party }}</p>
-    <p><strong>District:</strong> {{ district }}</p>
-    <p><strong>Constituency Type:</strong> {{ ac_type }}</p>
-    <a href="/">🔙 Predict Another</a>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+
+<div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-lg text-center">
+
+    <h1 class="text-3xl font-bold mb-6">
+        Prediction Result
+    </h1>
+
+    <div class="space-y-4 text-lg">
+
+        <p>
+            <span class="font-semibold">Prediction:</span>
+            {{ result }}
+        </p>
+
+        <p>
+            <span class="font-semibold">Party:</span>
+            {{ party }}
+        </p>
+
+        <p>
+            <span class="font-semibold">District:</span>
+            {{ district }}
+        </p>
+
+        <p>
+            <span class="font-semibold">Constituency Type:</span>
+            {{ ac_type }}
+        </p>
+
+    </div>
+
+    <a href="/"
+       class="inline-block mt-6 bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
+
+        Go Back
+    </a>
+
+</div>
+
 </body>
 </html>
