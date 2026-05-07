@@ -1,6 +1,7 @@
 # Bihar Election Race Predictor
 
 A machine learning-based web application that predicts election outcomes for constituencies in Bihar, India. The predictor uses historical polling data and electoral information to forecast which party will win a given constituency.
+###  Local Host : http://127.0.0.1:5000/
 
 ## Features
 
