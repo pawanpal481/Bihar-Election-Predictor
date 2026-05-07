@@ -88,11 +88,20 @@ The application provides predictions in the following format:
 ## Screenshots
 
 ### Input Form
+
 The main interface allows users to input various parameters including poll percentage, total votes, electors, and other electoral data.
 
+![Input Form](<img width="1913" height="925" alt="Screenshot 2026-05-07 140806" src="https://github.com/user-attachments/assets/21dfcb4b-c5bd-4c73-a42a-14941e69f6ae" />
+)
+
+---
+
 ### Prediction Results
+
 After clicking predict, the application displays the predicted outcome with party affiliation, district, and constituency type information.
 
+![Prediction Result](<img width="1919" height="926" alt="Screenshot 2026-05-07 140712" src="https://github.com/user-attachments/assets/f29dbc5a-9c8e-4a03-8987-60ebc36931a7" />
+)
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
