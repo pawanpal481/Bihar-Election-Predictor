@@ -86,25 +86,7 @@ The application provides predictions in the following format:
 - **District**: Constituency district
 - **Constituency Type**: Type of constituency
 
-## 📸 Screenshots
 
-### Input Form
-
-The main interface allows users to input various parameters including poll percentage, total votes, electors, and other electoral data.
-
-<p align="center">
-  <img src=""C:\Users\pawan\OneDrive\Pictures\Screenshots\Screenshot 2026-05-07 140806.png"" width="900">
-</p>
-
----
-
-### Prediction Results
-
-After clicking predict, the application displays the predicted outcome with party affiliation, district, and constituency type information.
-
-<p align="center">
-  <img src=""C:\Users\pawan\OneDrive\Pictures\Screenshots\Screenshot 2026-05-07 140712.png"" width="900">
-</p>
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
