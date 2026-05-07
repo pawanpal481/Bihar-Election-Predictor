@@ -1,69 +1,114 @@
-# 🗳️ Bihar Assembly Election ML Model
+# Bihar Election Race Predictor
 
-This project uses machine learning to analyze historical **Bihar Vidhan Sabha election data (2000–2020)** and predict whether a legislative race will be **tight or safe**.
+A machine learning-based web application that predicts election outcomes for constituencies in Bihar, India. The predictor uses historical polling data and electoral information to forecast which party will win a given constituency.
 
-## 📌 Project Objective
+## Features
 
-The aim is to assist political analysts, journalists, and data scientists by providing a predictive model that classifies election races based on:
+- **Interactive Web Interface**: User-friendly form to input election parameters
+- **Prediction Engine**: ML model that predicts election outcomes based on:
+  - Poll percentage
+  - Total votes
+  - Total electors
+  - Political party
+  - District
+  - Constituency type (General)
+  
+- **Instant Results**: Get real-time predictions with detailed information:
+  - Predicted outcome (Safe Seat or Competitive Race)
+  - Winning party
+  - District information
+  - Constituency type
 
-- Voter turnout
-- Party affiliation
-- Constituency type (General/SC/ST)
-- Margin and percentage of victory
-- Total electors and votes polled
+## Getting Started
 
-## 📂 Project Structure
-├── app.py                     # Flask web app ├── election_race_model.pkl    # Trained machine learning model ├── IndiaVotes_Bihar.csv       # Historical election data (2000–2020) ├── templates/                 # HTML templates for the web app ├── .gitignore └── README.md                  # Project documentation (this file)
+### Prerequisites
+- Python 3.7+
+- Flask
+- Machine Learning libraries (scikit-learn, pandas, numpy)
 
-## 🚀 How to Run Locally
+### Installation
 
-### 1. Clone the repository
-
+1. Clone the repository
 ```bash
-git clone https://github.com/Vivek-ML001/BiharElection.git
-cd BiharElection
+git clone https://github.com/pawanpal481/Bihar-Election-Predictor.git
+cd Bihar-Election-Predictor
+```
 
 2. Install dependencies
-
-Make sure Python is installed. Then run:
-
+```bash
 pip install -r requirements.txt
+```
 
-> If requirements.txt is not available, use:
-
-
-
-pip install pandas scikit-learn flask
-
-3. Run the app
-
+3. Run the application
+```bash
 python app.py
+```
 
-Then open your browser at http://127.0.0.1:5000
+4. Open your browser and navigate to:
+```
+http://127.0.0.1:5000/
+```
 
- 📊 Model Details
+## Usage
 
-Algorithm: (e.g., Random Forest, Logistic Regression)
+1. Enter the **Poll %** - Percentage from recent polls
+2. Enter the **Total Votes** - Expected total votes to be cast
+3. Enter the **Total Electors** - Total eligible voters in the constituency
+4. Select the **Party** - Choose from available political parties
+5. Select the **District** - Choose the district (e.g., Araria, Khagaria)
+6. Select the **Constituency Type** - Choose between General or other categories
+7. Click **Predict** - Get instant prediction results
 
-Target Label: Tight Race vs Safe Seat
+## Application Structure
 
-Input Features: Voter Turnout, Party, Constituency Type, Margin %, etc.
+```
+Bihar-Election-Predictor/
+├── app.py                 # Flask application
+├── model.pkl              # Trained ML model
+├── templates/
+│   ├── index.html         # Main input form
+│   └── result.html        # Prediction results page
+├── static/
+│   └── style.css          # Styling
+└── requirements.txt       # Python dependencies
+```
 
+## Model
 
-✨ Future Improvements
+The prediction model is trained on historical Bihar election data and uses machine learning algorithms to identify patterns and relationships between input features and election outcomes.
 
-Add visual analytics dashboard
+## Results
 
-Integrate real-time data scraping
+The application provides predictions in the following format:
+- **Prediction**: Safe Seat or Competitive Race
+- **Party**: Predicted winning party
+- **District**: Constituency district
+- **Constituency Type**: Type of constituency
 
-Improve accuracy using ensemble models
+## Screenshots
 
-Deploy on cloud (Render/Heroku/AWS)
+### Input Form
+The main interface allows users to input various parameters including poll percentage, total votes, electors, and other electoral data.
 
+### Prediction Results
+After clicking predict, the application displays the predicted outcome with party affiliation, district, and constituency type information.
 
-📮 Contact
+## Contributing
 
-Made by Vivek Kumar | GitHub Profile
+Contributions are welcome! Please feel free to submit a Pull Request.
 
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Author
+
+**Pawan Pal** - [GitHub Profile](https://github.com/pawanpal481)
+
+## Contact
+
+For questions or suggestions, please open an issue in the repository.
 
 ---
+
+**Note**: This predictor is for educational and informational purposes. Actual election outcomes may vary based on numerous factors not captured by the model.
